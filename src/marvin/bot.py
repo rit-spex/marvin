@@ -26,13 +26,10 @@ async def on_ready():
 async def on_message(message):
     """Called when message sent to accessable text channel.
 
-    Args:
-        message: message recieved from guild. discord.Message instance. 
-            NOTE: for more info on message objects: 
-            https://discordpy.readthedocs.io/en/stable/api.html#discord.Message
-
-    Pre:
-        Intents.message must be enabled.
+    Parameters
+    -----------
+        message: discord.Message instance 
+            Message recieved from guild. 
 
     TODO: handle 'guild' and dm messages separatly, can cause internal issues.
     """
@@ -40,7 +37,7 @@ async def on_message(message):
     if message.author == client.user:  # don't process messages from this bot
         return
     
-    print(message.content)
+    print(message.content)  # TODO: don't forget to remove this line.
 
     if message.content == 'marvin, are you alive?':
         await message.channel.send('Life? Don\'t talk to me about life.')
