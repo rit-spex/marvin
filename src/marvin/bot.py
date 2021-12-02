@@ -14,6 +14,7 @@ _FLAG = "!"
 
 
 client = discord.Client()
+# NOTE: switch from Client to Bot? https://stackoverflow.com/questions/51234778/what-are-the-differences-between-bot-and-client
 
 @client.event
 async def on_ready():
