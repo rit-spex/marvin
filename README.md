@@ -1,2 +1,4 @@
-# discord-bot
-TO BE RENAMED - Repo for SPEX discord bot
+# Marvin the Paranoid Android
+SPEX discord bot.
+
+![](./docs/marvin.jpg)
