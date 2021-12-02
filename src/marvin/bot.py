@@ -2,11 +2,12 @@
 
 Authors: Joshua Yoder, Stevie Alvarez
 '''
-import os
 
+import os
 import discord
 
-TOKEN = os.getenv('DISCORD_TOKEN')
+_TOKEN = os.getenv('DISCORD_TOKEN')
+_FLAG = "!"
 
 
 client = discord.Client()
@@ -16,6 +17,7 @@ async def on_ready():
     """ Called when bot successfully loged in and 'ready'. """
 
     print(f'{client.user} has connected to Discord!')
+
 
 @client.event
 async def on_message(message):
@@ -40,6 +42,11 @@ async def on_message(message):
     if message.content == 'marvin, are you alive?':
         await message.channel.send('Life? Don\'t talk to me about life.')
 
+    if message.content.startswith(_FLAG):
+        # handle message
+        pass
+
+
 # run bot
 if __name__ == '__main__':
-    client.run(TOKEN)
+    client.run(_TOKEN)
