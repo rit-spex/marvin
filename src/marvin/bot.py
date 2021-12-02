@@ -1,4 +1,4 @@
-''' A bot for the SPEX discord. 
+'''A bot for the SPEX discord. 
 
 Authors: Joshua Yoder, Stevie Alvarez
 '''
@@ -7,21 +7,24 @@ import os
 import discord
 
 _TOKEN = os.getenv('DISCORD_TOKEN')
+"""Bot account token, used to connect to bot's discord account."""
+
 _FLAG = "!"
+"""Indicates command when present in a message."""
 
 
 client = discord.Client()
 
 @client.event
 async def on_ready():
-    """ Called when bot successfully loged in and 'ready'. """
+    """Called when bot successfully loged in and 'ready'."""
 
     print(f'{client.user} has connected to Discord!')
 
 
 @client.event
 async def on_message(message):
-    """ Called when message sent to accessable text channel.
+    """Called when message sent to accessable text channel.
 
     Args:
         message: message recieved from guild. discord.Message instance. 
