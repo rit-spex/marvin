@@ -27,8 +27,7 @@ async def on_ready():
 async def on_message(message):
     """Called when message sent to accessable text channel.
 
-    Parameters
-    -----------
+    Args:
         message: discord.Message instance 
             Message recieved from guild. 
 
