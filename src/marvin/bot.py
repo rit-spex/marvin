@@ -7,6 +7,7 @@ import os
 import discord
 from static_responses import STATIC_RESPONSES
 
+
 _TOKEN = os.getenv('DISCORD_TOKEN')
 """Bot account token, used to connect to bot's discord account."""
 
