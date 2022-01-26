@@ -5,6 +5,7 @@ Authors: Joshua Yoder, Stevie Alvarez
 
 import os
 import discord
+from static_responses import STATIC_RESPONSES
 
 _TOKEN = os.getenv('DISCORD_TOKEN')
 """Bot account token, used to connect to bot's discord account."""
@@ -34,15 +35,19 @@ async def on_message(message):
     TODO: handle 'guild' and dm messages separatly, can cause internal issues.
     """
 
+    # skip if bot is the one that said it
     if message.author == client.user: 
         return
 
-    if message.content == 'marvin, are you alive?':
-        await message.channel.send('Life? Don\'t talk to me about life.')
-
     if message.content.startswith(_FLAG):
-        # handle message
-        pass
+        body = message.content.strip(_FLAG)
+
+        # handle simple messages
+        if body in STATIC_RESPONSES:
+            await message.channel.send(STATIC_RESPONSES[body])
+            return
+        
+        # handle complex messages
 
 
 # run bot
