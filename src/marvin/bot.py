@@ -6,6 +6,7 @@ Authors: Joshua Yoder, Stevie Alvarez
 import os
 import discord
 
+
 _TOKEN = os.getenv('DISCORD_TOKEN')
 """Bot account token, used to connect to bot's discord account."""
 
