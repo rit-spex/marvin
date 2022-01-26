@@ -9,7 +9,7 @@ import discord
 _TOKEN = os.getenv('DISCORD_TOKEN')
 """Bot account token, used to connect to bot's discord account."""
 
-_FLAG = "!"
+_FLAG = "$"
 """Indicates command when present in a message."""
 
 
@@ -34,10 +34,8 @@ async def on_message(message):
     TODO: handle 'guild' and dm messages separatly, can cause internal issues.
     """
 
-    if message.author == client.user:  # don't process messages from this bot
+    if message.author == client.user: 
         return
-    
-    print(message.content)  # TODO: don't forget to remove this line.
 
     if message.content == 'marvin, are you alive?':
         await message.channel.send('Life? Don\'t talk to me about life.')
