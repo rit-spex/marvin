@@ -20,7 +20,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    """Called when bot successfully loged in and 'ready'."""
+    """Called when bot successfully logged in and 'ready'."""
 
     print(f'{client.user} has connected to Discord!')
 
@@ -33,7 +33,7 @@ async def on_message(message):
         message: discord.Message instance 
             Message recieved from guild. 
 
-    TODO: handle 'guild' and dm messages separatly, can cause internal issues.
+    TODO: handle 'guild' and dm messages separately, can cause internal issues.
     """
 
     # skip if bot is the one that said it
