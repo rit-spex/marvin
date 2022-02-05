@@ -74,6 +74,5 @@ STATIC_RESPONSES = {
     "Hangouts link": "https://meet.google.com/dof-drim-for",
     "hangouts Link": "https://meet.google.com/dof-drim-for",
     "Hangouts Link": "https://meet.google.com/dof-drim-for",
-    "test": "testing testing 123",
-    "aubergine": "🍆 eggplant 🍆"
+    "test": "testing testing 123"
 }
