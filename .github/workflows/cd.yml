@@ -18,6 +18,7 @@ jobs:
         run: |
           echo "$ASTRO_PI_PEM" > private_key && chmod 400 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${ASTRO_PI_USERNAME}@${ASTRO_PI_HOSTNAME} '
+            source .bashrc &&
             cd marvin &&
             git checkout main &&
             git fetch --all &&
