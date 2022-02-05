@@ -18,13 +18,12 @@ jobs:
         run: |
           echo "$ASTRO_PI_PEM" > private_key && chmod 400 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${ASTRO_PI_USERNAME}@${ASTRO_PI_HOSTNAME} '
-            source .bashrc &&
             cd marvin &&
             git checkout main &&
             git fetch --all &&
             git reset --hard origin/main &&
             git pull origin main &&
-            poetry install &&
+            /home/pi/.poetry/bin/poetry install &&
             screen -S marvin -X quit &&
-            screen -S mavrin -md bash -c "export DISCORD_TOKEN=${DISCORD_TOKEN}; poetry run python3 src/marvin/bot.py"
+            screen -S mavrin -md bash -c "export DISCORD_TOKEN=${DISCORD_TOKEN}; /home/pi/.poetry/bin/poetry run python3 src/marvin/bot.py"
           '
