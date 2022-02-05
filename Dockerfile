@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY . .
 
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
+
 RUN apk add --update alpine-sdk
 RUN apk add --update libffi-dev
 RUN python3 -m pip install "poetry==1.1.12"
