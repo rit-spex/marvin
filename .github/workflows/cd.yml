@@ -25,5 +25,6 @@ jobs:
             git pull origin main &&
             /home/pi/.poetry/bin/poetry install &&
             screen -S marvin -X quit || true &&
-            screen -S mavrin -md bash -c "export DISCORD_TOKEN=${DISCORD_TOKEN}; /home/pi/.poetry/bin/poetry run python3 src/marvin/bot.py"
+            screen -S mavrin -md bash -c "export DISCORD_TOKEN=${{env.DISCORD_TOKEN}}; /home/pi/.poetry/bin/poetry run python3 src/marvin/bot.py" &&
+            echo Launched new instance of marvin
           '
