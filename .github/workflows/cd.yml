@@ -15,6 +15,7 @@ jobs:
           ASTRO_PI_USERNAME: ${{ secrets.ASTRO_PI_USERNAME }}
           ASTRO_PI_PEM: ${{ secrets.ASTRO_PI_PEM }}
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          RCON_PASSWORD: ${{ secrets.RCON_PASSWORD }}
         run: |
           echo "$ASTRO_PI_PEM" > private_key && chmod 400 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${ASTRO_PI_USERNAME}@${ASTRO_PI_HOSTNAME} '
@@ -25,6 +26,6 @@ jobs:
             git pull origin main &&
             /home/pi/.poetry/bin/poetry install &&
             screen -S marvin -X quit || true &&
-            screen -S marvin -md bash -c "export DISCORD_TOKEN=${{env.DISCORD_TOKEN}}; /home/pi/.poetry/bin/poetry run python3 src/marvin/bot.py" &&
+            screen -S marvin -md bash -c "export DISCORD_TOKEN=${{env.DISCORD_TOKEN}}; export RCON_PASSWORD=${{env.RCON_PASSWORD}}; /home/pi/.poetry/bin/poetry run python3 src/marvin/bot.py" &&
             echo Launched new instance of marvin
           '

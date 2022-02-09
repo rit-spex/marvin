@@ -71,6 +71,14 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "mcrcon"
+version = "0.7.0"
+description = "A client for handling Remote Commands (RCON) to a Minecraft server."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "multidict"
 version = "5.2.0"
 description = "multidict implementation"
@@ -101,7 +109,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "b9006e7da0a9f5d9490a8cf5727991e38a110028eac43895fe71bf35a4c3493f"
+content-hash = "e33c8924a3600f085fa0206c28fbc3e965b0807d1794c4ccbd10800c469abef8"
 
 [metadata.files]
 aiohttp = [
@@ -162,6 +170,9 @@ chardet = [
 idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},
     {file = "idna-3.3.tar.gz", hash = "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"},
+]
+mcrcon = [
+    {file = "mcrcon-0.7.0.tar.gz", hash = "sha256:c2f1caf2467e283e0ccd2436f1ce21f04242b03c5fafb3860e3924d764a910d4"},
 ]
 multidict = [
     {file = "multidict-5.2.0-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:3822c5894c72e3b35aae9909bef66ec83e44522faf767c0ad39e0e2de11d3b55"},

@@ -5,6 +5,7 @@ Authors: Joshua Yoder, Stevie Alvarez
 
 import os
 import discord
+import marvin.minecraft as minecraft
 from static_responses import STATIC_RESPONSES
 
 
@@ -48,7 +49,17 @@ async def on_message(message):
             await message.channel.send(STATIC_RESPONSES[body])
             return
         
-        # handle complex messages
+        body_array = body.split()
+
+        # handle minecraft stuff
+        if body_array[0] == "minecraft" and len(body_array) == 1:
+            await message.channel.send("<cool stuff goes here>")
+        elif body_array[0] == "minecraft" and body_array[1] == "whitelist":
+            response = minecraft.whitelist(body_array[2])
+            await message.channel.send(response)
+
+
+
 
 
 # run bot

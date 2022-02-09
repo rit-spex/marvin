@@ -1,2 +1,3 @@
 # discord token
 DISCORD_TOKEN=
+RCON_PASSWORD=
