@@ -1,6 +1,6 @@
 '''A bot for the SPEX discord. 
 
-Authors: Joshua Yoder, Stevie Alvarez
+Authors: Joshua Yoder, Stevie Alvarez, John Haley
 '''
 
 import os
