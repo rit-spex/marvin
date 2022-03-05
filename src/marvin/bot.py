@@ -3,9 +3,12 @@
 Authors: Joshua Yoder, Stevie Alvarez, John Haley
 '''
 
+from email import message
 import os
 import discord
+import sched, time, datetime
 import marvin.minecraft as minecraft
+import marvin.apotd as apod
 from static_responses import STATIC_RESPONSES
 
 
@@ -15,6 +18,9 @@ _TOKEN = os.getenv('DISCORD_TOKEN')
 _FLAG = "$"
 """Indicates command when present in a message."""
 
+SCHEDULER = sched.scheduler(time.localtime, time.sleep)
+"""Scheduler to run methods at certain times"""
+
 
 client = discord.Client()
 # NOTE: switch from Client to Bot? https://stackoverflow.com/questions/51234778/what-are-the-differences-between-bot-and-client
@@ -22,7 +28,8 @@ client = discord.Client()
 @client.event
 async def on_ready():
     """Called when bot successfully logged in and 'ready'."""
-
+    #SCHEDULER.enter(43200, 0, astroDailyPic)
+    #SCHEDULER.run()
     print(f'{client.user} has connected to Discord!')
 
 
@@ -59,7 +66,12 @@ async def on_message(message):
             await message.channel.send(response)
 
 
-
+async def astroDailyPic():
+    """
+    """
+    await client.fetch_channel(915777915596210276).send(apod.getAPOD())
+    SCHEDULER.enter(86400, 0, astroDailyPic)
+    SCHEDULER.run()
 
 
 # run bot
