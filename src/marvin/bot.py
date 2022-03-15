@@ -9,7 +9,7 @@ import discord
 import sched, time, datetime
 import marvin.minecraft as minecraft
 import marvin.apotd as apod
-from static_responses import STATIC_RESPONSES
+from marvin.static_responses import STATIC_RESPONSES
 
 
 _TOKEN = os.getenv('DISCORD_TOKEN')
