@@ -1,19 +1,24 @@
 '''A bot for the SPEX discord. 
 
-Authors: Joshua Yoder, Stevie Alvarez
+Authors: Joshua Yoder, Stevie Alvarez, John Haley
 '''
 
+from email import message
 import os
 import discord
+from discord.ext import tasks
+from discord.utils import get
+import sched, time, datetime
 import marvin.minecraft as minecraft
-from static_responses import STATIC_RESPONSES
+import marvin.apotd as apod
+from marvin.static_responses import STATIC_RESPONSES
 
 
+# Bot account token, used to connect to bot's discord account.
 _TOKEN = os.getenv('DISCORD_TOKEN')
-"""Bot account token, used to connect to bot's discord account."""
 
+# Indicates command when present in a message.
 _FLAG = "$"
-"""Indicates command when present in a message."""
 
 
 client = discord.Client()
@@ -22,8 +27,8 @@ client = discord.Client()
 @client.event
 async def on_ready():
     """Called when bot successfully logged in and 'ready'."""
-
     print(f'{client.user} has connected to Discord!')
+    astroDailyPic.start()
 
 
 @client.event
@@ -57,9 +62,18 @@ async def on_message(message):
         elif body_array[0] == "minecraft" and body_array[1] == "whitelist":
             response = minecraft.whitelist(body_array[2])
             await message.channel.send(response)
+        
+        # handle apod request
+        if (body_array[0] == "apod"):
+            await message.channel.send(apod.getAPOD())
 
 
-
+@tasks.loop(hours=24)
+async def astroDailyPic():
+    """Astro daily pic."""
+    print("APOD.")
+    channel = client.get_channel(891726419409899537)
+    await channel.send(apod.getAPOD())
 
 
 # run bot
