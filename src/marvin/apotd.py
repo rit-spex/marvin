@@ -14,7 +14,7 @@ def getAPOD() -> str:
     Returns:
         Formatted string containing APOD stuff
     """
-    response = requests.get("https://api.nasa.gov/planetary/apod?api_key=W8xVWTgcI545bXUBPyfaf8BlbTG2EcWdH2gRwhwa");
+    response = requests.get("https://api.nasa.gov/planetary/apod?api_key=W8xVWTgcI545bXUBPyfaf8BlbTG2EcWdH2gRwhwa")
     d = json.loads(response.text)
     apod = d["title"] + "\n" + d["hdurl"] + "\n" + d["explanation"]
     return apod
