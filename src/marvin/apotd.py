@@ -1,7 +1,5 @@
 '''Get astronomy photos each day.
 
-NASA API Key: W8xVWTgcI545bXUBPyfaf8BlbTG2EcWdH2gRwhwa
-
 Authors: Stevie Alvarez
 '''
 
@@ -16,7 +14,8 @@ def getAPOD() -> str:
     """
     response = requests.get("https://api.nasa.gov/planetary/apod?api_key=W8xVWTgcI545bXUBPyfaf8BlbTG2EcWdH2gRwhwa");
     d = json.loads(response.text)
-    apod = d["title"] + "\n" + d["hdurl"] + "\n" + d["explanation"]
+    # title in bold-italics, explination in a multi-line code block
+    apod = "***" + d["title"] + "\n" + "***" + d["hdurl"] + "\n```" + d["explanation"] + "```"
     return apod
 
 if '__main__'==__name__:
