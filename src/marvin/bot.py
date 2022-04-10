@@ -72,7 +72,7 @@ async def on_message(message):
 async def astroDailyPic():
     """Astro daily pic."""
     print("APOD.")
-    channel = client.get_channel(891726419409899537)
+    channel = client.get_channel(os.getenv("DISCORD_GENERAL"))
     await channel.send(apod.getAPOD())
 
 
