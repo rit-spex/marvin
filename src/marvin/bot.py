@@ -64,19 +64,24 @@ async def on_message(message):
             await message.channel.send(plz_help(param))
 
         # handle minecraft stuff
-        if body_array[0] == "minecraft" and len(body_array) == 1:
+        elif body_array[0] == "minecraft" and len(body_array) == 1:
             await message.channel.send("<cool stuff goes here>")
         elif body_array[0] == "minecraft" and body_array[1] == "whitelist":
             response = minecraft.whitelist(body_array[2])
             await message.channel.send(response)
         
         # handle apod request
-        if (body_array[0] == "apod"):
+        elif (body_array[0] == "apod"):
             await message.channel.send(apod.getAPOD())
 
         # handle weather request
-        if (body_array[0] == "weather"):
-            await message.channel.send("'weather' command is still under development.")
+        elif (body_array[0] == "weather"):
+            await message.channel.send("'weather' command is not functional... yet....")
+
+        # handle option DNE
+        else:
+            await message.channel.send("unknown option: " + body + "\nTry: '$help' for information on how to use me.")
+
 
 
 @tasks.loop(hours=24)
