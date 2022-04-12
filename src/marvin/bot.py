@@ -71,7 +71,7 @@ async def on_message(message):
             await message.channel.send(response)
         
         # handle apod request
-        if ((body_array[0] == "apod") or (body_array[0] == "apotd")):
+        if (body_array[0] == "apod"):
             await message.channel.send(apod.getAPOD())
 
         # handle weather request
