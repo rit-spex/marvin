@@ -66,7 +66,7 @@ async def on_message(message):
         # handle minecraft stuff
         elif body_array[0] == "minecraft" and len(body_array) == 1:
             await message.channel.send("<cool stuff goes here>")
-        elif body_array[0] == "minecraft" and body_array[1] == "whitelist":
+        elif body_array[0] == "minecraft" and body_array[1] == "whitelist" and len(body_array) > 2:
             response = minecraft.whitelist(body_array[2])
             await message.channel.send(response)
         
