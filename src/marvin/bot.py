@@ -8,7 +8,6 @@ import os
 import discord
 from discord.ext import tasks
 from discord.utils import get
-import sched, time, datetime
 import marvin.minecraft as minecraft
 import marvin.apotd as apod
 from marvin.static_responses import STATIC_RESPONSES
