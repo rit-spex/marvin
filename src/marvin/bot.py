@@ -8,6 +8,7 @@ import os
 import discord
 from discord.ext import tasks
 from discord.utils import get
+from marvin.help import plz_help
 import marvin.minecraft as minecraft
 import marvin.apotd as apod
 from marvin.static_responses import STATIC_RESPONSES
@@ -55,6 +56,13 @@ async def on_message(message):
         
         body_array = body.split()
 
+        # handle help request
+        if body_array[0] == "help":
+            param = None
+            if len(body_array) > 1:
+                param = body_array[1]
+            await message.channel.send(plz_help(param))
+
         # handle minecraft stuff
         if body_array[0] == "minecraft" and len(body_array) == 1:
             await message.channel.send("<cool stuff goes here>")
@@ -63,8 +71,12 @@ async def on_message(message):
             await message.channel.send(response)
         
         # handle apod request
-        if (body_array[0] == "apod"):
+        if ((body_array[0] == "apod") or (body_array[0] == "apotd")):
             await message.channel.send(apod.getAPOD())
+
+        # handle weather request
+        if (body_array[0] == "weather"):
+            await message.channel.send("'weather' command is still under development.")
 
 
 @tasks.loop(hours=24)
