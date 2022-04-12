@@ -58,6 +58,10 @@ async def on_message(message):
 
         # handle help request
         if body_array[0] == "help":
+            if len(body_array) == 3:
+              if body_array[1] == "Static" and body_array[2] == "Responses":
+                await message.channel.send("I can't help you with my Static Responses unfortunately. Try mentioning the Discord Dev roll and someone should be able to help.")
+
             param = None
             if len(body_array) > 1:
                 param = body_array[1]
