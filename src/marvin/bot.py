@@ -80,7 +80,7 @@ async def on_message(message):
 
         # handle option DNE
         else:
-            await message.channel.send("unknown option: " + body + "\nTry: '$help' for information on how to use me.")
+            await message.channel.send("unknown option: " + body + "\nTry: '$help' for information on how to have me do your bidding.")
 
 
 
