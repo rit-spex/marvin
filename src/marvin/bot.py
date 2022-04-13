@@ -8,7 +8,7 @@ import os
 import discord
 from discord.ext import tasks
 from discord.utils import get
-import sched, time, datetime
+from marvin.help import plz_help
 import marvin.minecraft as minecraft
 import marvin.apotd as apod
 from marvin.static_responses import STATIC_RESPONSES
@@ -56,23 +56,43 @@ async def on_message(message):
         
         body_array = body.split()
 
+        # handle help request
+        if body_array[0] == "help":
+            if len(body_array) == 3:
+              if body_array[1] == "Static" and body_array[2] == "Responses":
+                await message.channel.send("I can't help you with my Static Responses unfortunately. Try mentioning the Discord Dev roll and someone should be able to help.")
+
+            param = None
+            if len(body_array) > 1:
+                param = body_array[1]
+            await message.channel.send(plz_help(param))
+
         # handle minecraft stuff
-        if body_array[0] == "minecraft" and len(body_array) == 1:
+        elif body_array[0] == "minecraft" and len(body_array) == 1:
             await message.channel.send("<cool stuff goes here>")
-        elif body_array[0] == "minecraft" and body_array[1] == "whitelist":
+        elif body_array[0] == "minecraft" and body_array[1] == "whitelist" and len(body_array) > 2:
             response = minecraft.whitelist(body_array[2])
             await message.channel.send(response)
         
         # handle apod request
-        if (body_array[0] == "apod"):
+        elif (body_array[0] == "apod"):
             await message.channel.send(apod.getAPOD())
+
+        # handle weather request
+        elif (body_array[0] == "weather"):
+            await message.channel.send("'weather' command is not functional... yet....")
+
+        # handle option DNE
+        else:
+            await message.channel.send("unknown option: " + body + "\nTry: '$help' for information on how to have me do your bidding.")
+
 
 
 @tasks.loop(hours=24)
 async def astroDailyPic():
     """Astro daily pic."""
     print("APOD.")
-    channel = client.get_channel(891726419409899537)
+    channel = client.get_channel(os.getenv("DISCORD_GENERAL"))
     await channel.send(apod.getAPOD())
 
 
