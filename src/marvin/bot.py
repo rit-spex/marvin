@@ -41,7 +41,6 @@ async def on_message(message):
 
     TODO: handle 'guild' and dm messages separately, can cause internal issues.
     """
-
     # skip if bot is the one that said it
     if message.author == client.user: 
         return
