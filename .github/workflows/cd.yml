@@ -16,6 +16,9 @@ jobs:
           ASTRO_PI_PEM: ${{ secrets.ASTRO_PI_PEM }}
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
           RCON_PASSWORD: ${{ secrets.RCON_PASSWORD }}
+          DISCORD_GENERAL: ${{ secrets.DISCORD_GENERAL }}
+          NASA_TOKEN: ${{ secrets.NASA_TOKEN }}
+          OW_TOKEN: ${{ secrets.OW_TOKEN }}
         run: |
           echo "$ASTRO_PI_PEM" > private_key && chmod 400 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${ASTRO_PI_USERNAME}@${ASTRO_PI_HOSTNAME} '
