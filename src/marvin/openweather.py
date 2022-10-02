@@ -2,6 +2,7 @@
 
 import os
 import requests
+import json
 
 def weather() -> str: 
   """Get the weather from OpenWeather.
@@ -14,7 +15,10 @@ def weather() -> str:
   key = os.getenv("OW_TOKEN")
   string = "Weather:\n"
 
-  response = requests.get("https://api.openweathermap.org/data/2.5/weather?lat={" + lat + "&lon="+ lon + "&appid=" + key)
+  r = requests.get("https://api.openweathermap.org/data/2.5/weather?lat={" + lat + "&lon="+ lon + "&appid=" + key)
   # process response
+  response = json.load(r)
+  # https://openweathermap.org/current#one
+  # https://openweathermap.org/current#format
 
   return string
